@@ -1,8 +1,11 @@
 
 package com.example.caculator;
 
+import com.test.cpdemo.data.provider.CalContent.history;
+
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.ContentValues;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -42,6 +45,13 @@ public class MainActivity extends Activity {
 
                 Log.i(TAG, "param1=" + param1 + ", param2=" + param2);
                 mTextViewResult.setText("" + Caculator.plus(param1, param2));
+                // save to cp, just for demo
+                ContentValues values = new ContentValues();
+                values.put(history.Columns.PARAM1.getName(), param1);
+                values.put(history.Columns.PARAM2.getName(), param2);
+                values.put(history.Columns.RESULT.getName(), Caculator.plus(param1, param2));
+                getContentResolver().insert(history.CONTENT_URI, values);
+
             }
         });
     }

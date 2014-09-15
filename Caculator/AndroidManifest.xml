@@ -29,6 +29,12 @@
                 <action android:name="com.test.service.unittest" />
             </intent-filter>
         </service>
+
+        <provider
+            android:name="com.test.cpdemo.data.provider.CalProvider"
+            android:authorities="com.test.cpdemo.provider.CalProvider"
+            android:exported="false" >
+        </provider>
     </application>
 
 </manifest>
